@@ -24,6 +24,6 @@ def display_available_trains(ORIGIN, DESTINATION, DATE):
         coaches = requests.get(get_coach_url(ORIGIN,DESTINATION,DATE,train_number))
         avail_num = re.findall('<td>Availbility</td><td>:</td><td>(\S+)</td>', coaches.text)
         coach_availability = max(avail_num)
-        print ('%2d %5s %-30s Depart:%-5s -t Arrival:%-5s Availability: %s' % (i+1, train_number, train_name, train_departure_time, train_arrival_time, coach_availability))
+        print ('%2d %5s %-30s Depart:%-5s    Arrival:%-5s   Availability: %s' % (i+1, train_number, train_name, train_departure_time, train_arrival_time, coach_availability))
 
 # display_available_trains('7300','19100','31-Aug-2017')
