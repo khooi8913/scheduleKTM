@@ -13,6 +13,8 @@ def display_available_trains(ORIGIN, DESTINATION, DATE):
     trains = requests.get(get_train_url(ORIGIN,DESTINATION,DATE))
     trains = trains.json()
 
+    final_schedule = []
+
     for i, train in enumerate(trains):
         train_number = train['TMT_TNM_NUMBER']
         train_name = train['TNM_NAME']
@@ -26,4 +28,7 @@ def display_available_trains(ORIGIN, DESTINATION, DATE):
         coach_availability = max(avail_num)
         print ('%2d %5s %-30s Depart:%-5s    Arrival:%-5s   Availability: %s' % (i+1, train_number, train_name, train_departure_time, train_arrival_time, coach_availability))
 
-# display_available_trains('7300','19100','31-Aug-2017')
+        final_schedule.append({str(train_number):[{'Train_Name':train_name}, {'Train_Departure_Time':train_departure_time}, {'Train_Arrival_Time':train_arrival_time}, {'Availability':coach_availability}]})
+    print(final_schedule)
+
+display_available_trains('7300','19100','31-Aug-2017')
