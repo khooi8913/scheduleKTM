@@ -27,9 +27,7 @@ def display_available_trains(ORIGIN, DESTINATION, DATE):
         avail_num = re.findall('<td>Availbility</td><td>:</td><td>(\S+)</td>', coaches.text)
         coach_availability = max(avail_num)
         print ('%2d %5s %-30s Depart:%-5s    Arrival:%-5s   Availability: %s' % (i+1, train_number, train_name, train_departure_time, train_arrival_time, coach_availability))
-
-        final_schedule.append({str(train_number):[{'Train_Name':train_name}, {'Train_Departure_Time':train_departure_time}, {'Train_Arrival_Time':train_arrival_time}, {'Availability':coach_availability}]})
-    # print(final_schedule)
+        final_schedule.append({'Train_Number':str(train_number), 'Train_Name':train_name, 'Train_Departure_Time':train_departure_time, 'Train_Arrival_Time':train_arrival_time, 'Availability':coach_availability})
     return final_schedule
 
 # display_available_trains('7300','19100','31-Aug-2017')

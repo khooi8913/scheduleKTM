@@ -18,7 +18,7 @@ def display_all_stations():
     stations_all_states = stations()
     for states in stations_all_states:
         display_stations(states, stations_all_states)
-
+ 
 def display_stations(STATE, STATIONS=stations()):
     '''
     :param STATE: Complete name of the desired state
@@ -35,4 +35,5 @@ def display_stations(STATE, STATIONS=stations()):
     except KeyError:
         print ('Invalid state entered!')
 
-# display_all_stations()
+if __name__ == '__main__':
+	display_all_stations()

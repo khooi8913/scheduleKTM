@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Traineer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="view.css">
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	<script src="controller.js"></script>
+</head>
+
+<body ng-app="KTMSchedule" ng-cloak>
+  <nav>
+    <div class="nav-wrapper teal lighten-1">
+      <a href="#!" class="brand-logo">&nbsp;TRAINEER</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Stations</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Stations</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<br>
+
+<main>
+<div class="container" ng-controller="KTMScheduleController as KTM">
+<form>
+<div class="row">
+	<div class="input-field col s4">
+		<select ng-model="KTM.origin">
+			<optgroup label="Selangor">
+			<option value="16500">BATANG KALI</option>
+			<option value="55100">JLN KASTAM</option>
+			<option value="20400">KAJANG</option>
+			<option value="16100">KUALA KUBU BHARU</option>
+			<option value="18100">KUANG</option>
+			<option value="54400">PADANG JAWA</option>
+			<option value="17800">RAWANG</option>
+			<option value="17300">SERENDAH</option>
+			<option value="18500">SG BULOH</option>
+			<option value="55700">WEST PORT</option>
+			</optgroup>
+
+			<optgroup label="WILAYAH PERSEKUTUAN">
+			<option value="19600">BDR TASEK SELATAN</option>
+			<option value="18600">KEPONG</option>
+			<option value="18400">KEPONG SENTRAL</option>
+			<option value="19000">KUALA LUMPUR</option>
+			<option value="53000">PETALING</option>
+			<option value="19100">SENTRAL KUALA LUMPUR</option>
+			</optgroup>
+
+			<optgroup label="PULAU PINANG">
+			<option value="600">BUKIT MERTAJAM</option>
+			<option value="100">BUTTERWORTH</option>
+			<option value="40500">TASEK GELUGOR</option>
+			</optgroup>
+
+			<optgroup label="PERAK">
+			<option value="2600">BAGAN SERAI</option>
+			<option value="9700">BATU GAJAH</option>
+			<option value="14600">BEHRANG</option>
+			<option value="9000">IPOH</option>
+			<option value="10900">KAMPAR</option>
+			<option value="6300">KUALA KANGSAR</option>
+			<option value="9400">LAHAT</option>
+			<option value="1900">PARIT BUNTAR</option>
+			<option value="14100">SLIM RIVER</option>
+			<option value="7300">SUNGAI SIPUT</option>
+			<option value="12900">SUNGKAI</option>
+			<option value="4700">TAIPING</option>
+			<option value="15200">TANJONG MALIM</option>
+			<option value="11600">TAPEH ROAD</option>
+			<option value="8600">TASEK</option>
+			</optgroup>
+
+			<optgroup label="NEGERI SEMBILAN">
+			<option value="61800">BAHAU</option>
+			<option value="27800">GEMAS</option>
+			<option value="22700">SEREMBAN</option>
+			</optgroup>
+
+			<optgroup label="JOHOR">
+			<option value="28300">BATU ENAM</option>
+			<option value="31300">BEKOK</option>
+			<option value="32400">CHAMEK</option>
+			<option value="37500">JB SENTRAL</option>
+			<option value="36900">KEMPAS BARU</option>
+			<option value="33200">KLUANG</option>
+			<option value="36000">KULAI</option>
+			<option value="30500">LABIS</option>
+			<option value="34800">LAYANG LAYANG</option>
+			<option value="32100">PALOH</option>
+			<option value="37100">PASIR GUDANG</option>
+			<option value="34200">RENGAM</option>
+			<option value="29100">SEGAMAT</option>
+			</optgroup>
+
+			<optgroup label="MELAKA">
+			<option value="26400">BATANG MELAKA</option>
+			<option value="25100">PULAU SEBANG/TAMPIN</option>
+			</optgroup>
+
+			<optgroup label="KEDAH">
+			<option value="44000">ALOR STAR</option>
+			<option value="44400">ANAK BUKIT</option>
+			<option value="42400">GURUN</option>
+			<option value="41400">SUNGAI PETANI</option>
+			</optgroup>
+
+			<optgroup label="PAHANG">
+			<option value="73100">CHEGAR PERAH</option>
+			<option value="68700">JERANTUT</option>
+			<option value="63700">KEMAYAN</option>
+			<option value="70200">KRAMBIT</option>
+			<option value="67400">KUALA KRAU</option>
+			<option value="71300">KUALA LIPIS</option>
+			<option value="66100">MENTAKAB</option>
+			<option value="74800">MERAPOH</option>
+			<option value="71800">PADANG TUNGKU</option>
+			<option value="64400">TRIANG</option>
+			</optgroup>
+
+			<optgroup label="KELANTAN">
+			<option value="77800">BERTAM BARU</option>
+			<option value="80000">BUKIT ABU</option>
+			<option value="79300">DABONG</option>
+			<option value="76000">GUA MUSANG</option>
+			<option value="78900">KEMUBU</option>
+			<option value="82100">KRAI</option>
+			<option value="77400">LIMAU KASTURI</option>
+			<option value="81200">MANEK URAI</option>
+			<option value="85100">PASIR MAS</option>
+			<option value="83700">TANAH MERAH</option>
+			<option value="83100">TEMANGAN</option>
+			<option value="86300">TUMPAT</option>
+			<option value="85700">WAKAF BHARU</option>
+			</optgroup>
+
+			<optgroup label="PERLIS">
+			<option value="45800">ARAU</option>
+			<option value="46300">BUKIT KETRI</option>
+			<option value="47300">PADANG BESAR</option>
+			</optgroup>
+
+			<optgroup label="THAILAND">
+			<option value="91000">HAT YAI</option>
+			<option value="91600">SURAT THANI</option>
+			</optgroup>
+
+			<optgroup label="SINGAPORE">
+			<option value="37600">WOODLANDS CIQ</option>
+			</optgroup>
+		</select>
+		<label>Origin</label>
+	</div>
+
+	<div class="input-field col s4">
+		<select ng-model="KTM.destination">
+			<optgroup label="Selangor">
+			<option value="16500">BATANG KALI</option>
+			<option value="55100">JLN KASTAM</option>
+			<option value="20400">KAJANG</option>
+			<option value="16100">KUALA KUBU BHARU</option>
+			<option value="18100">KUANG</option>
+			<option value="54400">PADANG JAWA</option>
+			<option value="17800">RAWANG</option>
+			<option value="17300">SERENDAH</option>
+			<option value="18500">SG BULOH</option>
+			<option value="55700">WEST PORT</option>
+			</optgroup>
+
+			<optgroup label="WILAYAH PERSEKUTUAN">
+			<option value="19600">BDR TASEK SELATAN</option>
+			<option value="18600">KEPONG</option>
+			<option value="18400">KEPONG SENTRAL</option>
+			<option value="19000">KUALA LUMPUR</option>
+			<option value="53000">PETALING</option>
+			<option value="19100">SENTRAL KUALA LUMPUR</option>
+			</optgroup>
+
+			<optgroup label="PULAU PINANG">
+			<option value="600">BUKIT MERTAJAM</option>
+			<option value="100">BUTTERWORTH</option>
+			<option value="40500">TASEK GELUGOR</option>
+			</optgroup>
+
+			<optgroup label="PERAK">
+			<option value="2600">BAGAN SERAI</option>
+			<option value="9700">BATU GAJAH</option>
+			<option value="14600">BEHRANG</option>
+			<option value="9000">IPOH</option>
+			<option value="10900">KAMPAR</option>
+			<option value="6300">KUALA KANGSAR</option>
+			<option value="9400">LAHAT</option>
+			<option value="1900">PARIT BUNTAR</option>
+			<option value="14100">SLIM RIVER</option>
+			<option value="7300">SUNGAI SIPUT</option>
+			<option value="12900">SUNGKAI</option>
+			<option value="4700">TAIPING</option>
+			<option value="15200">TANJONG MALIM</option>
+			<option value="11600">TAPEH ROAD</option>
+			<option value="8600">TASEK</option>
+			</optgroup>
+
+			<optgroup label="NEGERI SEMBILAN">
+			<option value="61800">BAHAU</option>
+			<option value="27800">GEMAS</option>
+			<option value="22700">SEREMBAN</option>
+			</optgroup>
+
+			<optgroup label="JOHOR">
+			<option value="28300">BATU ENAM</option>
+			<option value="31300">BEKOK</option>
+			<option value="32400">CHAMEK</option>
+			<option value="37500">JB SENTRAL</option>
+			<option value="36900">KEMPAS BARU</option>
+			<option value="33200">KLUANG</option>
+			<option value="36000">KULAI</option>
+			<option value="30500">LABIS</option>
+			<option value="34800">LAYANG LAYANG</option>
+			<option value="32100">PALOH</option>
+			<option value="37100">PASIR GUDANG</option>
+			<option value="34200">RENGAM</option>
+			<option value="29100">SEGAMAT</option>
+			</optgroup>
+
+			<optgroup label="MELAKA">
+			<option value="26400">BATANG MELAKA</option>
+			<option value="25100">PULAU SEBANG/TAMPIN</option>
+			</optgroup>
+
+			<optgroup label="KEDAH">
+			<option value="44000">ALOR STAR</option>
+			<option value="44400">ANAK BUKIT</option>
+			<option value="42400">GURUN</option>
+			<option value="41400">SUNGAI PETANI</option>
+			</optgroup>
+
+			<optgroup label="PAHANG">
+			<option value="73100">CHEGAR PERAH</option>
+			<option value="68700">JERANTUT</option>
+			<option value="63700">KEMAYAN</option>
+			<option value="70200">KRAMBIT</option>
+			<option value="67400">KUALA KRAU</option>
+			<option value="71300">KUALA LIPIS</option>
+			<option value="66100">MENTAKAB</option>
+			<option value="74800">MERAPOH</option>
+			<option value="71800">PADANG TUNGKU</option>
+			<option value="64400">TRIANG</option>
+			</optgroup>
+
+			<optgroup label="KELANTAN">
+			<option value="77800">BERTAM BARU</option>
+			<option value="80000">BUKIT ABU</option>
+			<option value="79300">DABONG</option>
+			<option value="76000">GUA MUSANG</option>
+			<option value="78900">KEMUBU</option>
+			<option value="82100">KRAI</option>
+			<option value="77400">LIMAU KASTURI</option>
+			<option value="81200">MANEK URAI</option>
+			<option value="85100">PASIR MAS</option>
+			<option value="83700">TANAH MERAH</option>
+			<option value="83100">TEMANGAN</option>
+			<option value="86300">TUMPAT</option>
+			<option value="85700">WAKAF BHARU</option>
+			</optgroup>
+
+			<optgroup label="PERLIS">
+			<option value="45800">ARAU</option>
+			<option value="46300">BUKIT KETRI</option>
+			<option value="47300">PADANG BESAR</option>
+			</optgroup>
+
+			<optgroup label="THAILAND">
+			<option value="91000">HAT YAI</option>
+			<option value="91600">SURAT THANI</option>
+			</optgroup>
+
+			<optgroup label="SINGAPORE">
+			<option value="37600">WOODLANDS CIQ</option>
+			</optgroup>
+		</select>
+		<label>Destination</label>
+	</div>
+
+	<div class="input-field col s4">
+		<input type="text" class="datepicker" name="date" ng-model="KTM.date" placeholder="">
+		<label>Date</label>
+	</div>
+
+	<a class="waves-effect waves-light btn" ng-click="KTM.search(KTM.origin, KTM.destination, KTM.date);"><i class="material-icons left">search</i>Search</a>
+
+	<br>
+</div>
+</form>
+
+<table class="bordered highlight responsive-table">
+	<thead>
+	<tr>
+		<th>Index</th>
+		<th>Train No.</th>
+		<th>Train Name</th>
+		<th>Departure Time</th>
+		<th>Arrival Time</th>
+		<th>Availability</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="train in KTM.list">
+		<td>{{$index+1}}</td>
+		<td>{{train.Train_Number}}</td>
+		<td>{{train.Train_Name}}</td>
+		<td>{{train.Train_Departure_Time}}</td>
+		<td>{{train.Train_Arrival_Time}}</td>
+		<td>{{train.Availability}}</td>
+	</tr>
+	</tbody>
+</table>
+</div>
+</main>
+
+<br>
+
+<footer class="page-footer teal darken-1">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">TRAINEER</h5>
+        <p class="grey-text text-lighten-4">Train shcedule viewer made with <i class="material-icons tiny">favorite</i> by Nicholas and Leon</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="https://github.com/khooi8913/scheduleKTM" target="_blank">&nbsp;GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="view.js"></script>
+</body>
+</html>
