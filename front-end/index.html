@@ -311,15 +311,15 @@
 	<thead>
 	<tr>
 		<th>Index</th>
-		<th>Train No.</th>
-		<th>Train Name</th>
-		<th>Departure Time</th>
-		<th>Arrival Time</th>
-		<th>Availability</th>
+		<th ng-click="KTM.sort('Train_Number');">Train No.</th>
+		<th ng-click="KTM.sort('Train_Name');">Train Name</th>
+		<th ng-click="KTM.sort('Train_Departure_Time');">Departure Time</th>
+		<th ng-click="KTM.sort('Train_Arrival_Time');">Arrival Time</th>
+		<th ng-click="KTM.sort('Availability');">Availability</th>
 	</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="train in KTM.list">
+	<tr ng-repeat="train in KTM.list | orderBy:KTM.predicate:reverse">
 		<td>{{$index+1}}</td>
 		<td>{{train.Train_Number}}</td>
 		<td>{{train.Train_Name}}</td>
@@ -329,6 +329,9 @@
 	</tr>
 	</tbody>
 </table>
+<br>
+<p class="center-align hide" id="loader"><img src="Pacman.svg"></p>
+<h3 class="center-align teal-text hide" id="error">Oh oh, there is no available train!</h3>
 </div>
 </main>
 
