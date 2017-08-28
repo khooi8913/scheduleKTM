@@ -16,8 +16,20 @@ function KTMScheduleController(KTMScheduleService){
 	KTM.list = KTMScheduleService.getList();
 
 	KTM.search = function(origin,destination,date){
+		$("#error").addClass('hide');
+		$("#loader").removeClass('hide');
 		KTMScheduleService.callAPI(origin,destination,date);
 	}
+
+	KTM.predicate = "-Availability";
+
+	KTM.sort = function(predicate){
+		if(KTM.predicate==predicate)
+			KTM.predicate = "-" + KTM.predicate;
+		else
+			KTM.predicate = predicate;
+	}
+
 }
 
 KTMScheduleService.$inject = ['$http'];
@@ -40,7 +52,12 @@ function KTMScheduleService($http){
 			for(var item of response.data){
 				list.push(item);
 			}
-		})
+			if(list.length==0){$("#error").removeClass('hide');}
+			$("#loader").addClass('hide');
+		}).catch(function(){
+			$("#loader").addClass('hide');
+			$("#error").removeClass('hide');
+		});
 	}
 }
 
