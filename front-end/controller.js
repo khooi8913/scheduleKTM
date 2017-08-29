@@ -45,7 +45,7 @@ function KTMScheduleService($http){
 	service.callAPI = function(origin1,destination1,date1){
 		list.length = 0;
 		$http({
-			url: "https://free-code-camp-leonweecs.c9users.io/",
+			url: "https://traineer.herokuapp.com/",
 			method: "GET",
 			params: {origin: origin1, destination: destination1, date: date1}
 		}).then(function (response){
