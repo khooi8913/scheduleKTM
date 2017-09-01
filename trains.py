@@ -4,30 +4,47 @@ import re
 BASE_URL = 'https://intranet.ktmb.com.my/e-ticket'
 
 def get_train_url(ORIGIN, DESTINATION, DATE):
+    '''
+    :param ORIGIN: Origin Station Code
+    :param DESTINATION: Destination Station Code
+    :param DATE: Date Formatted in (DD-MMM-YYYY)
+    :return: URL for Schedule Retrieval
+    '''
     return BASE_URL + '/Ajax/GetTrainList.aspx?Origin='+ORIGIN+'&Destination='+DESTINATION+'&Tarikh='+DATE
 
 def get_coach_url(ORIGIN, DESTINATION, DATE, TRAIN):
+    '''
+    :param ORIGIN: Origin Station Code
+    :param DESTINATION: Destination Station Code
+    :param DATE: Date Formatted in (DD-MMM-YYYY)
+    :param TRAIN: Train Number
+    :return: URL for Train Coach Details Retrieval
+    '''
     return BASE_URL + '/Ajax/CoachList.aspx?Jalan=O&Origin='+ORIGIN+'&Destination='+DESTINATION+'&Train='+TRAIN+'&Tarikh='+DATE
 
 def display_available_trains(ORIGIN, DESTINATION, DATE):
+    '''
+    :param ORIGIN: Origin Station Code
+    :param DESTINATION: Destination Station Code
+    :param DATE: Date Formatted in (DD-MMM-YYYY)
+    :return: List of Trains with Details
+    '''
     trains = requests.get(get_train_url(ORIGIN,DESTINATION,DATE))
+    print (trains.text)
     trains = trains.json()
-
-    final_schedule = []
+    print (trains)
+    complete_schedule = []
 
     for i, train in enumerate(trains):
         train_number = train['TMT_TNM_NUMBER']
         train_name = train['TNM_NAME']
         train_departure_time = train['Departure'][-5:]
-        # train_departure_time = train_departure_time[-5:]
         train_arrival_time = train['Arrival'][-5:]
-        # train_arrival_time = train_arrival_time[-5:]
 
         coaches = requests.get(get_coach_url(ORIGIN,DESTINATION,DATE,train_number))
+
         avail_num = re.findall('<td>Availbility</td><td>:</td><td>(\S+)</td>', coaches.text)
         coach_availability = max(avail_num)
-        print ('%2d %5s %-30s Depart:%-5s    Arrival:%-5s   Availability: %s' % (i+1, train_number, train_name, train_departure_time, train_arrival_time, coach_availability))
-        final_schedule.append({'Train_Number':str(train_number), 'Train_Name':train_name, 'Train_Departure_Time':train_departure_time, 'Train_Arrival_Time':train_arrival_time, 'Availability':coach_availability})
-    return final_schedule
 
-# display_available_trains('7300','19100','31-Aug-2017')
+        complete_schedule.append({'tNum':str(train_number), 'tName':train_name, 'tDepart':train_departure_time, 'tArrive':train_arrival_time, 'tAvail':coach_availability})
+    return complete_schedule
