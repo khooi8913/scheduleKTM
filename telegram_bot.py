@@ -32,7 +32,8 @@ def train(bot, update, args):
 def state(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=bot_helper.list_of_states())
 
-updater = Updater(token='397011310:AAEAzAW1P_KMBj4lZU_fcKbxdqYFCgIqIKU')
+# YOUR TELEGRAM API PASSWORD HERE
+updater = Updater(token='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 dispatcher = updater.dispatcher
 
 start_handler = CommandHandler('start', start)
