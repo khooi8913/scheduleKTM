@@ -15,4 +15,4 @@ Simple Web Crawler for KTMB's E-Ticketing System
 ## Suggestions/ Improvements?
 
 Feel free to contact us or fork the project!
-Cheer!
+Cheers!
