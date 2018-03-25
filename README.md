@@ -1,6 +1,8 @@
-# scheduleKTM
+# scheduleKTM (Deprecated)
 
+**No longer working due to KTMB deployed new webpage/ endpoints for their services**
 Simple Web Crawler for KTMB's E-Ticketing System
+
 
 ## Functionality
 
